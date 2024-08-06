@@ -1,0 +1,17 @@
+## Interface: 1
+## Title: Points
+## Author: Shiah-Golemagg
+## Version: 1.0
+## SavedVariables: PTS_main_alts_map,PTS_transactions
+
+virtual.xml
+frame.xml
+
+globals.lua
+links.lua
+utils.lua
+export.lua
+autoaward.lua
+transactions.lua
+guild.lua
+points.lua

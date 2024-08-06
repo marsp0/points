@@ -1,0 +1,87 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<!-- <Script File="Button.lua"/> -->
+
+    <Frame name="DebugFrame" virtual="true">
+        <!-- <Layers>
+            <Layer>
+                <Texture name="$parentTexture" file="Interface\BUTTONS\WHITE8X8">
+                    <TexCoords left="0" right="1" top="0" bottom="1"/>
+                    <Color r="0.5" g="0.5" b="0.5"/>
+                </Texture>
+            </Layer>
+        </Layers> -->
+    </Frame>
+
+    <Button name="PointsButton" virtual="true" inherits="UIPanelButtonTemplate">
+        <Size> <AbsDimension x="80" y="20" /></Size>
+    </Button>
+
+    <Frame name="PointsTab" virtual="true" inherits="DebugFrame">
+        <Size> <AbsDimension x="570" y="400" /></Size>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentHeader">
+                <Offset>
+                    <AbsDimension x="0" y="-10"/>
+                </Offset>
+            </Anchor>
+        </Anchors>
+    </Frame>
+
+    <Frame name="PointsRow" virtual="true" inherits="DebugFrame">
+        <Size> <AbsDimension x="570" y="20" /></Size>
+        <Layers>
+            <Layer level="OVERLAY">
+                <!-- NAME -->
+                <FontString name="$parentName" inherits="GameFontNormal" justifyH="left">
+                    <Size> <AbsDimension x="270" y="20" /></Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+                <!-- CLASS -->
+                <FontString name="$parentClass" inherits="GameFontNormal" >
+                    <Size> <AbsDimension x="150" y="20" /></Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentName">
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+
+                <!-- POINTS -->
+                <FontString name="$parentPoints" inherits="GameFontNormal">
+                    <Size> <AbsDimension x="150" y="20" /></Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentClass">
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnMouseDown>
+                if IsMouseButtonDown("LeftButton") then points_name_on_click(self) end
+                if IsMouseButtonDown("RightButton") then swap_sort_method() end
+            </OnMouseDown>
+        </Scripts>
+    </Frame>
+
+    <Frame name="LinksRow" virtual="true" inherits="DebugFrame">
+        <Size> <AbsDimension x="570" y="20" /></Size>
+        <Layers>
+            <Layer level="OVERLAY">
+                <!-- NAME -->
+                <FontString name="$parentName" inherits="GameFontNormal" justifyH="left">
+                    <Size> <AbsDimension x="570" y="20" /></Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+	
+</Ui>

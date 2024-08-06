@@ -1,0 +1,242 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+    <Frame name="PointsAutoAward" parent="UIParent" hidden="false" toplevel="true"></Frame>
+		
+	<Frame name="PointsFrame" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true" clampedToScreen="true" inherits="BasicFrameTemplateWithInset">
+        <Size> <AbsDimension x="600" y="480" /></Size>
+        <Anchors><Anchor point="CENTER" /></Anchors>
+        <Frames>
+
+            <!-- HEADER -->
+            <Frame name="$parentHeader" inherits="DebugFrame">
+                <Size> <AbsDimension x="570" y="22" /></Size>
+                <Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="15" y="-30"/></Offset></Anchor></Anchors>
+                <Frames>
+                    <Button name="$parentGuildButton" text="Guild" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT"></Anchor></Anchors>
+                        <Scripts><OnClick> guild_button_on_click() </OnClick></Scripts>
+                    </Button>
+
+                    <Button name="$parentLinksButton" text="Main-Alt" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentGuildButton"></Anchor></Anchors>
+                        <Scripts><OnClick> links_button_on_click() </OnClick></Scripts>
+                    </Button>
+                    <Button name="$parentStandingsButton" text="Standings" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentLinksButton"></Anchor></Anchors>
+                        <Scripts><OnClick> export_points()</OnClick></Scripts>
+                    </Button>
+                    <Button name="$parentTransactionsButton" text="Transactions" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentStandingsButton"></Anchor></Anchors>
+                        <Scripts><OnClick> export_transactions()</OnClick></Scripts>
+                    </Button>
+
+                    <Button name="$parentAddRemoveButton" text="Add Points" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPRIGHT"></Anchor></Anchors>
+                        <Scripts>
+                            <OnClick>
+                                if _G["PointsFrameGuildTab"]:IsVisible() then
+                                    _G["PointsFrameAddRemoveTabName"]:SetText("Guild")
+                                end
+                                points_button_on_click() 
+                            </OnClick>
+                        </Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+
+            <!-- GUILD TAB -->
+            <Frame name="$parentGuildTab" inherits="PointsTab">
+                <Frames>
+                    <Frame name="$parentRow1" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" /> </Anchors></Frame>
+                    <Frame name="$parentRow2" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow1" /> </Anchors></Frame>
+                    <Frame name="$parentRow3" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow2" /> </Anchors></Frame>
+                    <Frame name="$parentRow4" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow3" /> </Anchors></Frame>
+                    <Frame name="$parentRow5" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow4" /> </Anchors></Frame>
+                    <Frame name="$parentRow6" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow5" /> </Anchors></Frame>
+                    <Frame name="$parentRow7" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow6" /> </Anchors></Frame>
+                    <Frame name="$parentRow8" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow7" /> </Anchors></Frame>
+                    <Frame name="$parentRow9" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow8" /> </Anchors></Frame>
+                    <Frame name="$parentRow10" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow9" /> </Anchors></Frame>
+                    <Frame name="$parentRow11" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow10" /> </Anchors></Frame>
+                    <Frame name="$parentRow12" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow11" /> </Anchors></Frame>
+                    <Frame name="$parentRow13" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow12" /> </Anchors></Frame>
+                    <Frame name="$parentRow14" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow13" /> </Anchors></Frame>
+                    <Frame name="$parentRow15" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow14" /> </Anchors></Frame>
+                    <Frame name="$parentRow16" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow15" /> </Anchors></Frame>
+                    <Frame name="$parentRow17" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow16" /> </Anchors></Frame>
+                    <Frame name="$parentRow18" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow17" /> </Anchors></Frame>
+                    <Frame name="$parentRow19" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow18" /> </Anchors></Frame>
+                    <Frame name="$parentRow20" inherits="PointsRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow19" /> </Anchors></Frame>
+                </Frames>
+
+                <Scripts>
+                    <OnMouseWheel>
+                        change_dkp_page(delta)
+                    </OnMouseWheel>
+                </Scripts>
+            </Frame>
+
+            <!-- ALT-MAIN links -->
+            <Frame name="$parentLinksTab" inherits="PointsTab">
+                <Frames>
+                    <Frame name="$parentRow1" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" /> </Anchors></Frame>
+                    <Frame name="$parentRow2" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow1" /> </Anchors></Frame>
+                    <Frame name="$parentRow3" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow2" /> </Anchors></Frame>
+                    <Frame name="$parentRow4" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow3" /> </Anchors></Frame>
+                    <Frame name="$parentRow5" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow4" /> </Anchors></Frame>
+                    <Frame name="$parentRow6" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow5" /> </Anchors></Frame>
+                    <Frame name="$parentRow7" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow6" /> </Anchors></Frame>
+                    <Frame name="$parentRow8" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow7" /> </Anchors></Frame>
+                    <Frame name="$parentRow9" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow8" /> </Anchors></Frame>
+                    <Frame name="$parentRow10" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow9" /> </Anchors></Frame>
+                    <Frame name="$parentRow11" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow10" /> </Anchors></Frame>
+                    <Frame name="$parentRow12" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow11" /> </Anchors></Frame>
+                    <Frame name="$parentRow13" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow12" /> </Anchors></Frame>
+                    <Frame name="$parentRow14" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow13" /> </Anchors></Frame>
+                    <Frame name="$parentRow15" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow14" /> </Anchors></Frame>
+                    <Frame name="$parentRow16" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow15" /> </Anchors></Frame>
+                    <Frame name="$parentRow17" inherits="LinksRow"><Anchors> <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentRow16" /> </Anchors></Frame>
+                    
+                    <!-- name -->
+                    <EditBox name="$parentMain" autoFocus="false" inherits="InputBoxTemplate">
+                        <Size><AbsDimension x="200" y="20"/> </Size>
+                        <Anchors><Anchor point="BOTTOMLEFT"/></Anchors>
+                        <Scripts>
+                            <OnTabPressed>
+								_G["PointsFrameLinksTabAlt"]:SetFocus();
+							</OnTabPressed>
+                        </Scripts>
+                    </EditBox >
+
+                    <!-- points -->
+                    <EditBox  name="$parentAlt" autoFocus="false" inherits="InputBoxTemplate">
+                        <Size><AbsDimension x="200" y="20"/> </Size>
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentMain"/></Anchors>
+                        <Scripts><OnTabPressed>_G["PointsFrameLinksTabMain"]:SetFocus();</OnTabPressed></Scripts>
+                    </EditBox>
+
+                    <Button name="$parentRemoveLink" text="Remove" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentAlt"/></Anchors>
+                        <Scripts><OnClick>remove_link()</OnClick></Scripts>
+                    </Button>
+
+                    <Button name="$parentAddLinkLink" text="Add" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentRemoveLink"/></Anchors>
+                        <Scripts><OnClick>add_link()</OnClick></Scripts>
+                    </Button>
+                </Frames>
+                <Scripts>
+                    <OnMouseWheel>
+                        change_links_page(delta)
+                    </OnMouseWheel>
+                </Scripts>
+            </Frame>
+
+            <Frame name="$parentEditorTab" inherits="PointsTab">
+                <Frames>
+                    <ScrollFrame name="$parentScroll"  inherits="UIPanelScrollFrameTemplate">
+                        <Size> <AbsDimension x="550" y="370" /></Size>
+                        <Anchors><Anchor point="TOPLEFT"></Anchor></Anchors>
+                        <ScrollChild>
+                            <EditBox name="$parentText" multiLine="true" historyLines="0" autoFocus="false">
+                                <Size> <AbsDimension x="550" y="370" /></Size>
+                                <Anchors><Anchor point="CENTER"/></Anchors>
+                                <FontString inherits="GameFontNormal"></FontString>
+                            </EditBox>
+                        </ScrollChild>
+                    </ScrollFrame>
+                    <Button name="$parentClearTransactions" text="Clear TRX" inherits="PointsButton">
+                        <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
+                        <Scripts><OnClick>clear_transactions()</OnClick></Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+
+            <!-- ADD/REMOVE POINTS -->
+            <Frame name="$parentAddRemoveTab" inherits="PointsTab">
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentNameLabel" inherits="GameFontNormal" justifyH="center" text="Type (Guild/Raid/Name-Server)">
+                            <Size> <AbsDimension x="200" y="20" /></Size>
+                            <Anchors><Anchor point="CENTER"><Offset x="0" y="100"/></Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox name="$parentName" autoFocus="false" inherits="InputBoxTemplate">
+                        <Size><AbsDimension x="200" y="20"/> </Size>
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentNameLabel"/></Anchors>
+                        <Scripts><OnTabPressed>_G["PointsFrameAddRemoveTabAmount"]:SetFocus();</OnTabPressed></Scripts>
+                    </EditBox >
+                </Frames>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentAmountLabel" inherits="GameFontNormal" justifyH="center" text="Amount ('-' for deductions)">
+                            <Size> <AbsDimension x="200" y="20" /></Size>
+                            <Anchors><Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentName"/></Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox  name="$parentAmount" autoFocus="false" inherits="InputBoxTemplate">
+                        <Size><AbsDimension x="200" y="20"/> </Size>
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAmountLabel"/></Anchors>
+                        <Scripts><OnTabPressed>_G["PointsFrameAddRemoveTabReason"]:SetFocus();</OnTabPressed></Scripts>
+                    </EditBox>
+
+                    <CheckButton name="$parentIsPercent" inherits="ChatConfigCheckButtonTemplate">
+                        <Size><AbsDimension x="20" y="20"/> </Size>
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentAmount"/></Anchors>
+                    </CheckButton>
+                </Frames>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentIsPercentLabel" inherits="GameFontNormalSmall" justifyH="center" justifyV="center" text="Percent">
+                            <Size> <AbsDimension x="50" y="20" /></Size>
+                            <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentIsPercent"/></Anchors>
+                        </FontString>
+                    </Layer>
+                    <Layer>
+                        <FontString name="$parentReasonLabel" inherits="GameFontNormal" justifyH="center" text="Reason">
+                            <Size> <AbsDimension x="200" y="20" /></Size>
+                            <Anchors><Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentAmount"/></Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <EditBox  name="$parentReason" autoFocus="false" inherits="InputBoxTemplate">
+                        <Size><AbsDimension x="200" y="20"/> </Size>
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentReasonLabel"/></Anchors>
+                        <Scripts><OnTabPressed>_G["PointsFrameAddRemoveTabName"]:SetFocus();</OnTabPressed></Scripts>
+                    </EditBox>
+
+                    <Button name="$parentApply" text="Apply" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parentReason"/></Anchors>
+                        <Scripts><OnClick> apply_points_change(); guild_button_on_click() </OnClick></Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+        </Frames>
+        <Scripts>
+            <OnShow>
+                links_button_on_click()
+            </OnShow>
+            <OnLoad>
+                self:RegisterEvent("ADDON_LOADED")
+                self:RegisterEvent("ENCOUNTER_END")
+            </OnLoad>
+            <OnEvent>
+                if event == "ADDON_LOADED" then
+                    local name = ...
+                    if name ~= "Points" then return end
+                    transactions_check()
+                elseif event == "ENCOUNTER_END" then
+                    local encounterID, encounterName, difficultyID, groupSize, success = ...
+                    auto_award(encounterID, success)
+                end
+            </OnEvent>
+        </Scripts>
+    </Frame>
+</Ui>
