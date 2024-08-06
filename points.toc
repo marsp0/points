@@ -4,12 +4,13 @@
 ## Version: 1.0
 ## SavedVariables: PTS_main_alts_map,PTS_transactions
 
+globals.lua
+utils.lua
+links.lua
+
 virtual.xml
 frame.xml
 
-globals.lua
-links.lua
-utils.lua
 export.lua
 autoaward.lua
 transactions.lua
