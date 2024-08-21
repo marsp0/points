@@ -107,14 +107,14 @@ function detect_winner(...)
 
     if not am_i_lootmaster() then PTS_print("cannot award points if you are not ML"); return end 
     if full_name ~= author or string.find(msg, " was awarded to ") == nil then return end
-
-    local char_name_start = string.find(msg, "%w+ for ")
+    
+    local char_name_start = string.find(msg, " was awarded to ") + 16
     local char_name_end = string.find(msg, " for %d+g.") - 1
     local amount_start = string.find(msg, "%d+g. Congrats")
     local amount_end = string.find(msg, "g. Congrats") - 1
     local item_start = string.find(msg, "|h%[") + 3
     local item_end = string.find(msg, "]|h|") - 1
-    
+
     auto_award_name = string.sub(msg, char_name_start, char_name_end)
     auto_award_amount = tonumber(string.sub(msg, amount_start, amount_end)) * -1
     auto_award_reason = string.sub(msg, item_start, item_end)
