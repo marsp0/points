@@ -5,3 +5,5 @@
     - addon shows panel on load to force main-alt list to load
 1.3.2
     - adjusted code that finds char name for autodeduct so that it does not use lua's ascii token
+1.3.3
+    - remove excessive printing when not ML
