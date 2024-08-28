@@ -73,11 +73,11 @@ function am_i_lootmaster()
 end
 
 function auto_award(encounter_id, success)
+    if not am_i_lootmaster() then return end 
+
     local encounter = PTS_rewards[encounter_id]
     if encounter == nil then PTS_print("encounter does not award points"); return end
     if success == 0 then PTS_print("not awarding points for wipe"); return end
-
-    if not am_i_lootmaster() then PTS_print("cannot award points if you are not ML"); return end 
 
     local names = {}
     local reason = "Killed " .. encounter[2]
@@ -87,7 +87,6 @@ function auto_award(encounter_id, success)
 end
 
 function auto_award_gargul()
-
     if auto_award_name == "" then return end
 
     local names = {}
@@ -102,10 +101,11 @@ function auto_award_gargul()
 end
 
 function detect_winner(...)
+    if not am_i_lootmaster() then return end
+
     local _, _, msg, author = ...
     local full_name = UnitName("player") .. "-" .. GetRealmName()
-
-    if not am_i_lootmaster() then PTS_print("cannot award points if you are not ML"); return end 
+ 
     if full_name ~= author or string.find(msg, " was awarded to ") == nil then return end
     
     local char_name_start = string.find(msg, " was awarded to ") + 16
