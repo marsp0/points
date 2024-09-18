@@ -7,3 +7,5 @@
     - adjusted code that finds char name for autodeduct so that it does not use lua's ascii token
 1.3.3
     - remove excessive printing when not ML
+1.3.4
+    - show points of winner in deduct frame

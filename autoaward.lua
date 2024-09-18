@@ -50,7 +50,8 @@ PTS_rewards = {
 local auto_award_name = ""
 local auto_award_amount = 0
 local auto_award_reason = ""
-local dialog_template = "Deduct %s points from %s for %s ?"
+local auto_award_player_points = 0
+local dialog_template = "Deduct %s points from %s for %s ?\n\nCurrent points: %s"
 
 function get_name_with_server(name)
     members = GetNumGroupMembers();
@@ -90,14 +91,14 @@ function auto_award_gargul()
     if auto_award_name == "" then return end
 
     local names = {}
-    local full_receiver_name = get_name_with_server(auto_award_name)
-    gather_player_chars(full_receiver_name, names)
+    gather_player_chars(auto_award_name, names)
     apply_points_to_group(names, auto_award_amount, false, auto_award_reason)
-    broadcast_message(math.abs(auto_award_amount) .. " points taken from " .. full_receiver_name .. " - " .. auto_award_reason)
+    broadcast_message(math.abs(auto_award_amount) .. " points taken from " .. auto_award_name .. " - " .. auto_award_reason)
 
     auto_award_name = ""
     auto_award_amount = 0
     auto_award_reason = ""
+    auto_award_player_points = 0
 end
 
 function detect_winner(...)
@@ -115,11 +116,23 @@ function detect_winner(...)
     local item_start = string.find(msg, "|h%[") + 3
     local item_end = string.find(msg, "]|h|") - 1
 
-    auto_award_name = string.sub(msg, char_name_start, char_name_end)
+    auto_award_name = get_name_with_server(string.sub(msg, char_name_start, char_name_end))
     auto_award_amount = tonumber(string.sub(msg, amount_start, amount_end)) * -1
     auto_award_reason = string.sub(msg, item_start, item_end)
 
-    StaticPopupDialogs["POINTS_AUTO_AWARD_CONFIRM"].text = string.format(dialog_template, math.abs(auto_award_amount), auto_award_name, auto_award_reason)
+    -- find current amount
+    for i=1, GetNumGuildMembers() do
+        local char_name, _, _, _, _, _, _, officernote = GetGuildRosterInfo(i);
+        if char_name == auto_award_name then
+            auto_award_player_points = read_points(officernote)
+        end
+    end
+
+    StaticPopupDialogs["POINTS_AUTO_AWARD_CONFIRM"].text = string.format(dialog_template, 
+                                                                         math.abs(auto_award_amount), 
+                                                                         auto_award_name, 
+                                                                         auto_award_reason, 
+                                                                         auto_award_player_points)
     StaticPopup_Show("POINTS_AUTO_AWARD_CONFIRM");
 end
 
