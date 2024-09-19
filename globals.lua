@@ -3,6 +3,7 @@ PTS_sort_by_name = true
 PTS_main_alts_map = PTS_main_alts_map or {}
 PTS_alt_main_map = {}
 PTS_transactions = PTS_transactions or {}
+PTS_diff_map = PTS_diff_map or {} 
 
 SlashCmdList['POINTS_SLASHCMD'] = function(msg)
     local f = _G["PointsFrame"]

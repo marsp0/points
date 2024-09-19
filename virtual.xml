@@ -83,5 +83,11 @@
             </Layer>
         </Layers>
     </Frame>
+
+    <Frame name="PointsAdmn" virtual="true" inherits="PointsButton">
+        <Scripts>
+            <OnLoad>if not am_admn() then self:Hide() end</OnLoad>
+        </Scripts>
+    </Frame>
 	
 </Ui>

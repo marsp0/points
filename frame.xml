@@ -30,6 +30,10 @@
                         <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentStandingsButton"></Anchor></Anchors>
                         <Scripts><OnClick> export_transactions()</OnClick></Scripts>
                     </Button>
+                    <Button name="$parentDiffButton" text="Diff" inherits="PointsAdmn">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentTransactionsButton"></Anchor></Anchors>
+                        <Scripts><OnClick> export_diff() </OnClick></Scripts>
+                    </Button>
 
                     <Button name="$parentAddRemoveButton" text="Add Points" inherits="PointsButton">
                         <Anchors><Anchor point="TOPRIGHT"></Anchor></Anchors>
@@ -149,6 +153,10 @@
                     <Button name="$parentClearTransactions" text="Clear TRX" inherits="PointsButton">
                         <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
                         <Scripts><OnClick>clear_transactions()</OnClick></Scripts>
+                    </Button>
+                    <Button name="$parentDiffButton" text="Update" inherits="PointsAdmn">
+                        <Anchors><Anchor point="BOTTOMLEFT"></Anchor></Anchors>
+                        <Scripts><OnClick> update_diff() </OnClick></Scripts>
                     </Button>
                 </Frames>
             </Frame>

@@ -21,6 +21,8 @@ function set_active_tab(tab_name)
     if f then f:Show() end
 end
 
+function am_admn() return UnitName("player") == "Shiah" end
+
 function PTS_print(msg)
     print("Unity Points: " .. msg)
 end
