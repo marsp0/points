@@ -2,7 +2,7 @@
 ## Title: Points
 ## Author: Shiah-Golemagg
 ## Version: 1.0
-## SavedVariables: PTS_main_alts_map,PTS_transactions
+## SavedVariables: PTS_main_alts_map,PTS_transactions,PTS_diff_map
 
 globals.lua
 utils.lua

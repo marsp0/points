@@ -154,7 +154,7 @@
                         <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
                         <Scripts><OnClick>clear_transactions()</OnClick></Scripts>
                     </Button>
-                    <Button name="$parentDiffButton" text="Update" inherits="PointsAdmn">
+                    <Button name="$parentDiffButton" text="Update DIFF" inherits="PointsAdmn">
                         <Anchors><Anchor point="BOTTOMLEFT"></Anchor></Anchors>
                         <Scripts><OnClick> update_diff() </OnClick></Scripts>
                     </Button>
