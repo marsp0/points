@@ -29,7 +29,7 @@ function export_diff()
         if actual ~= expected then
             if actual == nil then actual = 0 end
             if expected == nil then expected = 0 end
-            f:Insert(char_name .. ", " .. expected .. ", " .. actual .. ",\n" )
+            f:Insert(char_name .. "," .. expected .. ", " .. actual .. ", " .. math.abs(expected - actual) .. "\n" )
         end
     end
 end
