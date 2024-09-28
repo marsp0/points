@@ -24,6 +24,8 @@ end
 function am_admn() return UnitName("player") == "Shiah" end
 
 function am_i_lootmaster()
+    if not UnitInRaid("player") then return false end
+
     local lootmethod, masterlooterPartyID, masterlooterRaidID = GetLootMethod()
     if lootmethod ~= "master" then return false end
     local master_looter_name = GetRaidRosterInfo(masterlooterRaidID);
