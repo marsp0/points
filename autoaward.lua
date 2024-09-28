@@ -47,23 +47,6 @@ PTS_rewards = {
     [1114] = { 16, "Kel'Thuzad" }
 }
 
-local auto_award_name = ""
-local auto_award_amount = 0
-local auto_award_reason = ""
-local auto_award_player_points = 0
-local dialog_template = "Deduct %s points from %s for %s ?\n\nCurrent points: %s"
-
-function get_name_with_server(name)
-    members = GetNumGroupMembers();
-    for i=1, members do
-        unit_name, realm = UnitName("raid"..i)
-        if unit_name == name then
-            if realm == nil or realm == "" then realm = GetRealmName() end
-            return name .. "-" .. realm
-        end
-    end
-end
-
 function auto_award(encounter_id, success)
     if not am_i_lootmaster() then return end 
 
@@ -77,65 +60,3 @@ function auto_award(encounter_id, success)
     apply_points_to_group(names, encounter[1], false, reason)
     broadcast(encounter[1] .. " points awarded to raid for killing " .. encounter[2])
 end
-
-function auto_award_gargul()
-    if auto_award_name == "" then return end
-
-    local names = {}
-    gather_player_chars(auto_award_name, names)
-    apply_points_to_group(names, auto_award_amount, false, auto_award_reason)
-    broadcast(math.abs(auto_award_amount) .. " points taken from " .. auto_award_name .. " - " .. auto_award_reason)
-
-    auto_award_name = ""
-    auto_award_amount = 0
-    auto_award_reason = ""
-    auto_award_player_points = 0
-end
-
-function detect_winner(...)
-    if not am_i_lootmaster() then return end
-
-    local _, _, msg, author = ...
-    local full_name = UnitName("player") .. "-" .. GetRealmName()
- 
-    if full_name ~= author or string.find(msg, " was awarded to ") == nil then return end
-    
-    local char_name_start = string.find(msg, " was awarded to ") + 16
-    local char_name_end = string.find(msg, " for %d+g.") - 1
-    local amount_start = string.find(msg, "%d+g. Congrats")
-    local amount_end = string.find(msg, "g. Congrats") - 1
-    local item_start = string.find(msg, "|h%[") + 3
-    local item_end = string.find(msg, "]|h|") - 1
-
-    auto_award_name = get_name_with_server(string.sub(msg, char_name_start, char_name_end))
-    auto_award_amount = tonumber(string.sub(msg, amount_start, amount_end)) * -1
-    auto_award_reason = string.sub(msg, item_start, item_end)
-
-    -- find current amount
-    for i=1, GetNumGuildMembers() do
-        local char_name, _, _, _, _, _, _, officernote = GetGuildRosterInfo(i);
-        if char_name == auto_award_name then
-            auto_award_player_points = read_points(officernote)
-        end
-    end
-
-    StaticPopupDialogs["POINTS_AUTO_AWARD_CONFIRM"].text = string.format(dialog_template, 
-                                                                         math.abs(auto_award_amount), 
-                                                                         auto_award_name, 
-                                                                         auto_award_reason, 
-                                                                         auto_award_player_points)
-    StaticPopup_Show("POINTS_AUTO_AWARD_CONFIRM");
-end
-
-local auto_award_frame = _G["PointsAutoAward"]
-auto_award_frame:RegisterEvent("CHAT_MSG_RAID")
-auto_award_frame:RegisterEvent("CHAT_MSG_RAID_LEADER")
-auto_award_frame:RegisterEvent("CHAT_MSG_RAID_WARNING")
-auto_award_frame:SetScript("OnEvent", detect_winner)
-
-StaticPopupDialogs["POINTS_AUTO_AWARD_CONFIRM"] = { 
-    text = "", 
-    button1 = ACCEPT, 
-    button2 = CANCEL, 
-    OnAccept = auto_award_gargul
-};
