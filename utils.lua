@@ -23,11 +23,20 @@ end
 
 function am_admn() return UnitName("player") == "Shiah" end
 
+function am_i_lootmaster()
+    local lootmethod, masterlooterPartyID, masterlooterRaidID = GetLootMethod()
+    if lootmethod ~= "master" then return false end
+    local master_looter_name = GetRaidRosterInfo(masterlooterRaidID);
+    local name, _ = UnitName("player")
+
+    return name == master_looter_name
+end
+
 function PTS_print(msg)
     print("Unity Points: " .. msg)
 end
 
-function broadcast_message(msg)
+function broadcast(msg)
     if true then
         SendChatMessage(msg, "GUILD")
     else

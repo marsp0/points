@@ -82,7 +82,7 @@ function apply_points_change()
     end
     local report_points = math.abs(amount)
     if (is_percent) then report_points = report_points .. "%" end
-    broadcast_message(report_points .. msg .. name .. " - " .. reason)
+    broadcast(report_points .. msg .. name .. " - " .. reason)
 end
 
 function points_button_on_click()

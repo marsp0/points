@@ -13,6 +13,7 @@ frame.xml
 
 export.lua
 autoaward.lua
+gargul.lua
 transactions.lua
 guild.lua
 points.lua

@@ -64,15 +64,6 @@ function get_name_with_server(name)
     end
 end
 
-function am_i_lootmaster()
-    local lootmethod, masterlooterPartyID, masterlooterRaidID = GetLootMethod()
-    if lootmethod ~= "master" then return false end
-    local master_looter_name = GetRaidRosterInfo(masterlooterRaidID);
-    local name, _ = UnitName("player")
-
-    return name == master_looter_name
-end
-
 function auto_award(encounter_id, success)
     if not am_i_lootmaster() then return end 
 
@@ -84,7 +75,7 @@ function auto_award(encounter_id, success)
     local reason = "Killed " .. encounter[2]
     gather_raid_chars(names)
     apply_points_to_group(names, encounter[1], false, reason)
-    broadcast_message(encounter[1] .. " points awarded to raid for killing " .. encounter[2])
+    broadcast(encounter[1] .. " points awarded to raid for killing " .. encounter[2])
 end
 
 function auto_award_gargul()
@@ -93,7 +84,7 @@ function auto_award_gargul()
     local names = {}
     gather_player_chars(auto_award_name, names)
     apply_points_to_group(names, auto_award_amount, false, auto_award_reason)
-    broadcast_message(math.abs(auto_award_amount) .. " points taken from " .. auto_award_name .. " - " .. auto_award_reason)
+    broadcast(math.abs(auto_award_amount) .. " points taken from " .. auto_award_name .. " - " .. auto_award_reason)
 
     auto_award_name = ""
     auto_award_amount = 0
