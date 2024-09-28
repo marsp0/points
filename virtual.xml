@@ -20,11 +20,7 @@
     <Frame name="PointsTab" virtual="true" inherits="DebugFrame">
         <Size> <AbsDimension x="570" y="400" /></Size>
         <Anchors>
-            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentHeader">
-                <Offset>
-                    <AbsDimension x="0" y="-10"/>
-                </Offset>
-            </Anchor>
+            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentHeader"><Offset><AbsDimension x="0" y="-10"/></Offset></Anchor>
         </Anchors>
     </Frame>
 
@@ -35,28 +31,19 @@
                 <!-- NAME -->
                 <FontString name="$parentName" inherits="GameFontNormal" justifyH="left">
                     <Size> <AbsDimension x="270" y="20" /></Size>
-                    <Anchors>
-                        <Anchor point="TOPLEFT">
-                        </Anchor>
-                    </Anchors>
+                    <Anchors><Anchor point="TOPLEFT"></Anchor></Anchors>
                 </FontString>
 
                 <!-- CLASS -->
                 <FontString name="$parentClass" inherits="GameFontNormal" >
                     <Size> <AbsDimension x="150" y="20" /></Size>
-                    <Anchors>
-                        <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentName">
-                        </Anchor>
-                    </Anchors>
+                    <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentName"></Anchor></Anchors>
                 </FontString>
 
                 <!-- POINTS -->
                 <FontString name="$parentPoints" inherits="GameFontNormal">
                     <Size> <AbsDimension x="150" y="20" /></Size>
-                    <Anchors>
-                        <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentClass">
-                        </Anchor>
-                    </Anchors>
+                    <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentClass"></Anchor></Anchors>
                 </FontString>
             </Layer>
         </Layers>
@@ -75,19 +62,14 @@
                 <!-- NAME -->
                 <FontString name="$parentName" inherits="GameFontNormal" justifyH="left">
                     <Size> <AbsDimension x="570" y="20" /></Size>
-                    <Anchors>
-                        <Anchor point="TOPLEFT">
-                        </Anchor>
-                    </Anchors>
+                    <Anchors><Anchor point="TOPLEFT"></Anchor></Anchors>
                 </FontString>
             </Layer>
         </Layers>
     </Frame>
 
     <Frame name="PointsAdmn" virtual="true" inherits="PointsButton">
-        <Scripts>
-            <OnLoad>if not am_admn() then self:Hide() end</OnLoad>
-        </Scripts>
+        <Scripts><OnLoad>if not am_admn() then self:Hide() end</OnLoad></Scripts>
     </Frame>
 	
 </Ui>
