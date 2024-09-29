@@ -81,11 +81,9 @@ function run_point_init()
 
     -- enable only in guild raids
     local zoneName, instanceType, _, _, _, _, _, areaID = GetInstanceInfo()
-	if instanceType == "raid" then 
-		if raid_zones_map[areaID] and not LoggingCombat() then
-            run_check = true
-			return
-		end
+	if instanceType == "raid" and raid_zones_map[areaID] then 
+		run_check = true
+        return
 	end
 
     PTS_print("Disabling gargul bid checks")
