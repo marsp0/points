@@ -243,7 +243,7 @@
                     self:Show()
                 elseif event == "ENCOUNTER_END" then
                     local encounterID, encounterName, difficultyID, groupSize, success = ...
-                    auto_award(encounterID, success)
+                    boss_kill_award(encounterID, success)
                 end
             </OnEvent>
         </Scripts>

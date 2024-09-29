@@ -47,7 +47,7 @@ PTS_rewards = {
     [1114] = { 16, "Kel'Thuzad" }
 }
 
-function auto_award(encounter_id, success)
+function boss_kill_award(encounter_id, success)
     if not am_i_lootmaster() then return end 
 
     local encounter = PTS_rewards[encounter_id]

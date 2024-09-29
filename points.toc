@@ -12,7 +12,7 @@ virtual.xml
 frame.xml
 
 export.lua
-autoaward.lua
+boss_kill.lua
 gargul.lua
 transactions.lua
 guild.lua
