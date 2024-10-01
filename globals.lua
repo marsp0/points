@@ -5,6 +5,7 @@ PTS_alt_main_map = {}
 PTS_transactions = PTS_transactions or {}
 PTS_diff_map = PTS_diff_map or {} 
 PTS_consums = PTS_consums or {}
+PTS_consums_times = PTS_consums_times or {}
 
 SlashCmdList['POINTS_SLASHCMD'] = function(msg)
     local f = _G["PointsFrame"]

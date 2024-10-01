@@ -152,7 +152,7 @@
                     </Button>
                     <Button name="$parentClearConsumsButton" text="Clear" inherits="PointsAdmn">
                         <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
-                        <Scripts><OnClick> PTS_consums = {} </OnClick></Scripts>
+                        <Scripts><OnClick> clear_consums() </OnClick></Scripts>
                     </Button>
 
                     <Button name="$parentStandingsButton" text="Standings" inherits="PointsButton">

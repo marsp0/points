@@ -86,6 +86,10 @@ function read_points(note)
     return tonumber(note) or 0
 end
 
+function startswith(str, sub)
+    return string.sub(str,1,string.len(sub))==sub
+end
+
 
 -- -- import
 -- guild_points = {}

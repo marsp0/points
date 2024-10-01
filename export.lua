@@ -55,4 +55,15 @@ end
 function export_consums()
     set_active_tab("PointsFrameEditorTab")
     _G["PointsFrameEditorTabClearConsumsButton"]:Show()
+
+    local f = _G["PointsFrameEditorTabScrollText"]
+
+    for player, consums in pairs(PTS_consums) do
+        local str_row = player .. ", "
+        for name, quantity in pairs(consums) do
+            str_row = str_row .. name .. " (" .. quantity .. "), "
+        end
+
+        f:Insert(str_row)
+    end
 end
