@@ -18,7 +18,7 @@
     </Button>
 
     <Frame name="PointsTab" virtual="true" inherits="DebugFrame">
-        <Size> <AbsDimension x="570" y="405" /></Size>
+        <Size> <AbsDimension x="570" y="407" /></Size>
         <Anchors><Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentHeader"><Offset><AbsDimension x="0" y="-10"/></Offset></Anchor></Anchors>
     </Frame>
 
