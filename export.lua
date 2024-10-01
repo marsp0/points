@@ -1,3 +1,11 @@
+function export_button_on_click()
+    set_active_tab("PointsFrameEditorTab")
+    _G["PointsFrameEditorTabStandingsButton"]:Show()
+    _G["PointsFrameEditorTabTransactionsButton"]:Show()
+    
+    if am_admn() then _G["PointsFrameEditorTabDiffButton"]:Show() end
+end
+
 function export_points()
     set_active_tab("PointsFrameEditorTab")
     local f = _G["PointsFrameEditorTabScrollText"]
@@ -21,7 +29,7 @@ end
 
 function export_diff()
     set_active_tab("PointsFrameEditorTab")
-    _G["PointsFrameEditorTabDiffButton"]:Show()
+    _G["PointsFrameEditorTabUpdateDiffButton"]:Show()
     local f = _G["PointsFrameEditorTabScrollText"]
 
     for i=1, GetNumGuildMembers() do

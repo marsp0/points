@@ -14,7 +14,7 @@ function set_active_tab(tab_name)
     _G["PointsFrameAddRemoveTab"]:Hide()
     _G["PointsFrameEditorTab"]:Hide()
     _G["PointsFrameEditorTabClearTransactions"]:Hide()
-    _G["PointsFrameEditorTabDiffButton"]:Hide()
+    _G["PointsFrameEditorTabUpdateDiffButton"]:Hide()
 
     -- clear export frame
     _G["PointsFrameEditorTabScrollText"]:SetText("")

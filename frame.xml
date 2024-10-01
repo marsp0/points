@@ -22,17 +22,9 @@
                         <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentGuildButton"></Anchor></Anchors>
                         <Scripts><OnClick> links_button_on_click() </OnClick></Scripts>
                     </Button>
-                    <Button name="$parentStandingsButton" text="Standings" inherits="PointsButton">
+                    <Button name="$parentExportButton" text="Exports" inherits="PointsButton">
                         <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentLinksButton"></Anchor></Anchors>
-                        <Scripts><OnClick> export_points()</OnClick></Scripts>
-                    </Button>
-                    <Button name="$parentTransactionsButton" text="Transactions" inherits="PointsButton">
-                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentStandingsButton"></Anchor></Anchors>
-                        <Scripts><OnClick> export_transactions()</OnClick></Scripts>
-                    </Button>
-                    <Button name="$parentDiffButton" text="Diff" inherits="PointsAdmn">
-                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentTransactionsButton"></Anchor></Anchors>
-                        <Scripts><OnClick> export_diff() </OnClick></Scripts>
+                        <Scripts><OnClick> export_button_on_click() </OnClick></Scripts>
                     </Button>
 
                     <Button name="$parentAddRemoveButton" text="Add Points" inherits="PointsButton">
@@ -154,9 +146,22 @@
                         <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
                         <Scripts><OnClick>clear_transactions()</OnClick></Scripts>
                     </Button>
-                    <Button name="$parentDiffButton" text="Update DIFF" inherits="PointsAdmn">
+                    <Button name="$parentUpdateDiffButton" text="Update DIFF" inherits="PointsAdmn">
                         <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
                         <Scripts><OnClick> update_diff() </OnClick></Scripts>
+                    </Button>
+
+                    <Button name="$parentStandingsButton" text="Standings" inherits="PointsButton">
+                        <Anchors><Anchor point="BOTTOMLEFT" ></Anchor></Anchors>
+                        <Scripts><OnClick> export_points()</OnClick></Scripts>
+                    </Button>
+                    <Button name="$parentTransactionsButton" text="Transactions" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentStandingsButton"></Anchor></Anchors>
+                        <Scripts><OnClick> export_transactions()</OnClick></Scripts>
+                    </Button>
+                    <Button name="$parentDiffButton" text="Diff" inherits="PointsAdmn">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentTransactionsButton"></Anchor></Anchors>
+                        <Scripts><OnClick> export_diff() </OnClick></Scripts>
                     </Button>
                 </Frames>
             </Frame>
