@@ -13,12 +13,13 @@ function set_active_tab(tab_name)
     _G["PointsFrameLinksTab"]:Hide()
     _G["PointsFrameAddRemoveTab"]:Hide()
     _G["PointsFrameEditorTab"]:Hide()
+    _G["PointsFrameEditorTabClearTransactions"]:Hide()
+    _G["PointsFrameEditorTabDiffButton"]:Hide()
 
     -- clear export frame
     _G["PointsFrameEditorTabScrollText"]:SetText("")
 
-    local f = _G[tab_name]
-    if f then f:Show() end
+    _G[tab_name]:Show()
 end
 
 function am_admn() return UnitName("player") == "Shiah" end

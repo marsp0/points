@@ -11,6 +11,7 @@ end
 
 function export_transactions()
     set_active_tab("PointsFrameEditorTab")
+    _G["PointsFrameEditorTabClearTransactions"]:Show()
     local f = _G["PointsFrameEditorTabScrollText"]
 
     for _, v in pairs(PTS_transactions) do
@@ -20,6 +21,7 @@ end
 
 function export_diff()
     set_active_tab("PointsFrameEditorTab")
+    _G["PointsFrameEditorTabDiffButton"]:Show()
     local f = _G["PointsFrameEditorTabScrollText"]
 
     for i=1, GetNumGuildMembers() do
