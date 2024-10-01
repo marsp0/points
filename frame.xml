@@ -142,13 +142,17 @@
                             </EditBox>
                         </ScrollChild>
                     </ScrollFrame>
-                    <Button name="$parentClearTransactions" text="Clear TRX" inherits="PointsButton">
+                    <Button name="$parentClearTransactions" text="Clear" inherits="PointsButton">
                         <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
                         <Scripts><OnClick>clear_transactions()</OnClick></Scripts>
                     </Button>
-                    <Button name="$parentUpdateDiffButton" text="Update DIFF" inherits="PointsAdmn">
+                    <Button name="$parentUpdateDiffButton" text="Update" inherits="PointsAdmn">
                         <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
                         <Scripts><OnClick> update_diff() </OnClick></Scripts>
+                    </Button>
+                    <Button name="$parentClearConsumsButton" text="Clear" inherits="PointsAdmn">
+                        <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
+                        <Scripts><OnClick> PTS_consums = {} </OnClick></Scripts>
                     </Button>
 
                     <Button name="$parentStandingsButton" text="Standings" inherits="PointsButton">
@@ -159,8 +163,12 @@
                         <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentStandingsButton"></Anchor></Anchors>
                         <Scripts><OnClick> export_transactions()</OnClick></Scripts>
                     </Button>
-                    <Button name="$parentDiffButton" text="Diff" inherits="PointsAdmn">
+                    <Button name="$parentConsumsButton" text="Consums" inherits="PointsButton">
                         <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentTransactionsButton"></Anchor></Anchors>
+                        <Scripts><OnClick> export_consums()</OnClick></Scripts>
+                    </Button>
+                    <Button name="$parentDiffButton" text="Diff" inherits="PointsAdmn">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentConsumsButton"></Anchor></Anchors>
                         <Scripts><OnClick> export_diff() </OnClick></Scripts>
                     </Button>
                 </Frames>

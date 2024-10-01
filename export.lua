@@ -51,3 +51,8 @@ function update_diff()
         PTS_diff_map[char_name] = read_points(officernote)
     end
 end
+
+function export_consums()
+    set_active_tab("PointsFrameEditorTab")
+    _G["PointsFrameEditorTabClearConsumsButton"]:Show()
+end
