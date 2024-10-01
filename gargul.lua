@@ -70,10 +70,13 @@ function run_point_init()
     for i=1, GetNumGuildMembers() do last_broadcast_time[string.lower(GetGuildRosterInfo(i))] = 0 end
 
     -- enable only in guild raids
-    if in_guild_raid() then run_check = true; return end
-
-    PTS_print("Disabling gargul bid checks")
-    run_check = false
+    if in_guild_raid() then 
+        run_check = true; 
+        PTS_print("Enabling gargul bid checks")
+    else    
+        run_check = false
+        PTS_print("Disabling gargul bid checks")
+    end
 end
 
 local f = CreateFrame("Frame")
