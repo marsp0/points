@@ -72,10 +72,10 @@ function run_point_init()
     -- enable only in guild raids
     if in_guild_raid() then 
         run_check = true; 
-        PTS_print("Enabling gargul bid checks")
+        PTS_print("[Enabled] Tracking overbids")
     else    
         run_check = false
-        PTS_print("Disabling gargul bid checks")
+        PTS_print("[Disabled] Tracking overbids")
     end
 end
 
