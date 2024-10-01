@@ -5,16 +5,6 @@ local overbid_msg = "%s overbid on items. Bids: %s, Current: %s, Items: %s"
 local update_interval_s = 2
 local broadcast_interval_s = 5
 
-raid_zones_map = {
-    [249] = true,
-    [409] = true,
-    [469] = true,
-    [509] = true,
-    [531] = true,
-    [533] = true,
-    [309] = true
-}
-
 function run_point_check()
     local auctions = _G.Gargul.GDKP.MultiAuction.Client.AuctionDetails.Auctions
     local current_time = GetTime()
@@ -80,11 +70,7 @@ function run_point_init()
     for i=1, GetNumGuildMembers() do last_broadcast_time[string.lower(GetGuildRosterInfo(i))] = 0 end
 
     -- enable only in guild raids
-    local zoneName, instanceType, _, _, _, _, _, areaID = GetInstanceInfo()
-	if instanceType == "raid" and raid_zones_map[areaID] then 
-		run_check = true
-        return
-	end
+    if in_guild_raid() then run_check = true; return end
 
     PTS_print("Disabling gargul bid checks")
     run_check = false

@@ -8,6 +8,16 @@ ccm["Paladin"] = {r=0.96, g=0.55, b=0.73}
 ccm["Priest"]  = {r=1.0, g=1.0, b=1.0}
 ccm["Druid"]   = {r=1.0, g=0.49, b=0.04}
 
+raid_zones_map = {
+    [249] = true,
+    [409] = true,
+    [469] = true,
+    [509] = true,
+    [531] = true,
+    [533] = true,
+    [309] = true
+}
+
 function set_active_tab(tab_name)
     _G["PointsFrameGuildTab"]:Hide()
     _G["PointsFrameLinksTab"]:Hide()
@@ -21,6 +31,15 @@ function set_active_tab(tab_name)
     _G["PointsFrameEditorTabScrollText"]:SetText("")
 
     _G[tab_name]:Show()
+end
+
+function in_guild_raid()
+    local zoneName, instanceType, _, _, _, _, _, areaID = GetInstanceInfo()
+    if instanceType == "raid" and raid_zones_map[areaID] then 
+        return true
+    end
+
+    return false
 end
 
 function am_admn() return UnitName("player") == "Shiah" end
