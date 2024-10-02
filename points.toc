@@ -13,7 +13,7 @@ frame.xml
 
 export.lua
 boss_kill.lua
-gargul.lua
+gargul-overbids.lua
 consums.lua
 transactions.lua
 guild.lua
