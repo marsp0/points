@@ -64,6 +64,6 @@ function export_consums()
             str_row = str_row .. name .. " (" .. quantity .. "), "
         end
 
-        f:Insert(str_row)
+        f:Insert(str_row .. "\n")
     end
 end
