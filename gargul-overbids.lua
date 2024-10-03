@@ -41,6 +41,7 @@ function run_point_check()
 
     -- announce overbids
     for player, bid in pairs(total_points) do
+        if not last_broadcast_time[player] then last_broadcast_time[player] = 0 end
         local overbid = current_points[player] < bid
         local can_broadcast = current_time - last_broadcast_time[player] > broadcast_interval_s
         if overbid and can_broadcast then
@@ -53,6 +54,7 @@ function run_point_check()
     for id, auction in pairs(auctions) do
         if auction.endsAt ~= 0 and auction.BidsPerPlayer then
             for player, bid in pairs(auction.BidsPerPlayer) do
+                if not last_broadcast_time[player] then last_broadcast_time[player] = 0 end
                 local overbid = current_points[player] < bid
                 local can_broadcast = current_time - last_broadcast_time[player] > broadcast_interval_s
                 if overbid and can_broadcast then
@@ -65,10 +67,7 @@ function run_point_check()
 end
 
 function run_point_init()
-    -- reset broadcast timers
     last_broadcast_time = {}
-    for i=1, GetNumGuildMembers() do last_broadcast_time[string.lower(GetGuildRosterInfo(i))] = 0 end
-
     -- enable only in guild raids
     if in_guild_raid() then 
         run_check = true; 
