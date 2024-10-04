@@ -49,7 +49,7 @@ f:SetScript("OnEvent", function(self, event, ...)
                 if not PTS_consums_times[player] then PTS_consums_times[player] = {} end
                 if not PTS_consums_times[player][consum_name] then PTS_consums_times[player][consum_name] = 0 end
                 
-                if PTS_consums_times[player][consum_name] < start_time then
+                if start_time - PTS_consums_times[player][consum_name] > 10 then
                     if not PTS_consums[player] then PTS_consums[player] = {} end
                     if not PTS_consums[player][consum_name] then PTS_consums[player][consum_name] = 0 end
 
