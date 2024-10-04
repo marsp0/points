@@ -14,6 +14,7 @@ frame.xml
 export.lua
 boss_kill.lua
 gargul-overbids.lua
+gargul-deduct.lua
 consums.lua
 transactions.lua
 guild.lua
