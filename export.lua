@@ -50,6 +50,7 @@ function update_diff()
         local char_name, _, _, _, _, _, _, officernote = GetGuildRosterInfo(i);
         PTS_diff_map[char_name] = read_points(officernote)
     end
+    export_diff()
 end
 
 function export_consums()
