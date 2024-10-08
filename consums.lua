@@ -15,7 +15,7 @@ local registry = {
     [24363] = "Mageblood",
     [24799] = "Dumplings",
     [18194] = "Nightfin",
-    [10157] = "Int"
+    -- [10157] = "Int"
 }
 
 local f = CreateFrame("Frame")
