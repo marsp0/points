@@ -69,7 +69,7 @@ end
 function run_point_init()
     last_broadcast_time = {}
     -- enable only in guild raids
-    if in_guild_raid() then 
+    if in_guild_raid() and am_i_lootmaster() then 
         run_check = true; 
         PTS_print("[Enabled] Tracking overbids")
     else    
