@@ -89,15 +89,3 @@ end
 function startswith(str, sub)
     return string.sub(str,1,string.len(sub))==sub
 end
-
-
--- -- import
--- guild_points = {}
--- for name, points in pairs(guild_points) do
---     for i=1, GetNumGuildMembers() do
---         local char_name, _, _, _, cls, _, note, officernote = GetGuildRosterInfo(i);
---         if char_name == name then 
---             add_points(i, points)
---         end
---     end
--- end
