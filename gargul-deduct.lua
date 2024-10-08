@@ -14,7 +14,7 @@ function gargul_deduct_points()
             if not deductions[current.player] then deductions[current.player] = 0 end
             if not deductions_reasons[current.player] then deductions_reasons[current.player] = "" end
             deductions[current.player] = deductions[current.player] + current.amount
-            deductions_reasons[current.player] = deductions_reasons[current.player] .. "; " .. auction.name
+            deductions_reasons[current.player] = deductions_reasons[current.player] .. " / " .. auction.name
         end
     end
 
