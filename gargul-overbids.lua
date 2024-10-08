@@ -10,7 +10,6 @@ function run_point_check()
     local current_time = GetTime()
     local run_update = current_time - last_update_time > update_interval_s
 
-    if not am_i_lootmaster()    then return end 
     if not run_check            then return end
     if not run_update           then return end
     if not auctions             then return end
