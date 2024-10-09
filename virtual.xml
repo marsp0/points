@@ -5,12 +5,12 @@
         <Size> <AbsDimension x="80" y="20" /></Size>
     </Button>
 
-    <Frame name="PointsTab" virtual="true" inherits="DebugFrame">
+    <Frame name="PointsTab" virtual="true" >
         <Size> <AbsDimension x="570" y="407" /></Size>
         <Anchors><Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parentHeader"><Offset><AbsDimension x="0" y="-10"/></Offset></Anchor></Anchors>
     </Frame>
 
-    <Frame name="PointsRow" virtual="true" inherits="DebugFrame">
+    <Frame name="PointsRow" virtual="true" >
         <Size> <AbsDimension x="570" y="20" /></Size>
         <Layers>
             <Layer level="OVERLAY">
@@ -41,7 +41,7 @@
         </Scripts>
     </Frame>
 
-    <Frame name="LinksRow" virtual="true" inherits="DebugFrame">
+    <Frame name="LinksRow" virtual="true" >
         <Size> <AbsDimension x="570" y="20" /></Size>
         <Layers>
             <Layer level="OVERLAY">

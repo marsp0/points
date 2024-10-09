@@ -27,7 +27,7 @@
         <Frames>
 
             <!-- HEADER -->
-            <Frame name="$parentHeader" inherits="DebugFrame">
+            <Frame name="$parentHeader">
                 <Size> <AbsDimension x="570" y="22" /></Size>
                 <Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="15" y="-30"/></Offset></Anchor></Anchors>
                 <Frames>
