@@ -62,7 +62,7 @@ function export_consums()
     for player, consums in pairs(PTS_consums) do
         local str_row = player .. ", "
         for name, quantity in pairs(consums) do
-            str_row = str_row .. name .. " (" .. quantity .. "), "
+            str_row = str_row .. quantity .. "x " .. name .. ", "
         end
 
         f:Insert(str_row .. "\n")
