@@ -14,6 +14,12 @@ function run_point_check()
     if not run_update           then return end
     if not auctions             then return end
 
+    -- run check only if there are active auctions
+    local len = 0
+    for id, auction in pairs(auctions) do if auction.endsAt ~= 0 then len = len + 1 end end
+    if len == 0 then return end
+
+
     local current_points = {}
     local total_points = {}
     local items = {}
@@ -23,10 +29,12 @@ function run_point_check()
     -- populate temporary cache of player points
     for i=1, GetNumGuildMembers() do
         local char_name, _, _, _, _, _, _, officernote = GetGuildRosterInfo(i);
-        local name_lower = string.lower(char_name)
-        current_points[name_lower] = read_points(officernote)
-        total_points[name_lower] = 0
-        items[name_lower] = ""
+        if char_name then
+            local name_lower = string.lower(char_name)
+            current_points[name_lower] = read_points(officernote)
+            total_points[name_lower] = 0
+            items[name_lower] = ""
+        end
     end
 
     -- check for multibids
