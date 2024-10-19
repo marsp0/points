@@ -15,9 +15,9 @@ function run_point_check()
     if not auctions             then return end
 
     -- run check only if there are active auctions
-    local len = 0
-    for id, auction in pairs(auctions) do if auction.endsAt ~= 0 then len = len + 1 end end
-    if len == 0 then return end
+    local active_auctions = 0
+    for id, auction in pairs(auctions) do if auction.endsAt ~= 0 then active_auctions = active_auctions + 1 end end
+    if active_auctions == 0 then return end
 
 
     local current_points = {}
@@ -80,7 +80,7 @@ function run_point_init()
         run_check = true; 
         PTS_print("[Enabled] Tracking overbids")
     else    
-        run_check = false
+        -- run_check = false
         PTS_print("[Disabled] Tracking overbids")
     end
 end
