@@ -9,3 +9,7 @@
     - remove excessive printing when not ML
 1.3.4
     - show points of winner in deduct frame
+1.3.5
+    - overbid checks in multibid auctions
+    - button that deducts all people that have won in the current auction
+    - consums tracker
