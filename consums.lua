@@ -18,6 +18,13 @@ local registry = {
     -- [10157] = "Int"
 }
 
+local raid_units = {
+    ["raid1"] = true,  ["raid2"] = true, ["raid3"] = true, ["raid4"] = true, ["raid5"] = true, ["raid6"] = true, ["raid7"] = true, ["raid8"] = true, ["raid9"] = true, ["raid10"] = true, 
+    ["raid11"] = true, ["raid12"] = true, ["raid13"] = true, ["raid14"] = true, ["raid15"] = true, ["raid16"] = true, ["raid17"] = true, ["raid18"] = true, ["raid19"] = true, ["raid20"] = true, 
+    ["raid21"] = true, ["raid22"] = true, ["raid23"] = true, ["raid24"] = true, ["raid25"] = true, ["raid26"] = true, ["raid27"] = true, ["raid28"] = true, ["raid29"] = true, ["raid30"] = true, 
+    ["raid31"] = true, ["raid32"] = true, ["raid33"] = true, ["raid34"] = true, ["raid35"] = true, ["raid36"] = true, ["raid37"] = true, ["raid38"] = true, ["raid39"] = true, ["raid40"] = true, 
+}
+
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
 
@@ -32,7 +39,7 @@ f:SetScript("OnEvent", function(self, event, ...)
         end
     elseif event == "UNIT_AURA" then
         unit_id = ...
-        if not startswith(unit_id, "raid") or startswith(unit_id, "raidpet") then return end
+        if not raid_units[unit_id] then return end
         
         local current_time = GetTime()
         local player, realm = UnitName(unit_id)
