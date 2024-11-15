@@ -259,10 +259,9 @@
             </Frame>
         </Frames>
         <Scripts>
-            <OnShow>
-                links_button_on_click()
-            </OnShow>
+            <OnShow> links_button_on_click() </OnShow>
             <OnLoad>
+                self:RegisterForDrag("LeftButton")
                 self:RegisterEvent("ADDON_LOADED")
                 self:RegisterEvent("ENCOUNTER_END")
             </OnLoad>
@@ -277,6 +276,8 @@
                     boss_kill_award(encounterID, success)
                 end
             </OnEvent>
+            <OnMouseDown>self:StartMoving();</OnMouseDown>
+			<OnMouseUp>self:StopMovingOrSizing();</OnMouseUp>
         </Scripts>
     </Frame>
 </Ui>
