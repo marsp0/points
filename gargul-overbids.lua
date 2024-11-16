@@ -86,7 +86,7 @@ function run_point_init()
         run_check = true; 
         PTS_print("[Enabled] Tracking overbids")
     else    
-        -- run_check = false
+        run_check = false
         PTS_print("[Disabled] Tracking overbids")
     end
 end
