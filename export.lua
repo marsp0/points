@@ -1,7 +1,5 @@
 function export_button_on_click()
     set_active_tab("PointsFrameEditorTab")
-    _G["PointsFrameEditorTabStandingsButton"]:Show()
-    _G["PointsFrameEditorTabTransactionsButton"]:Show()
     
     if am_admn() then _G["PointsFrameEditorTabDiffButton"]:Show() end
 end
