@@ -1,11 +1,13 @@
 function export_button_on_click()
     set_active_tab("PointsFrameEditorTab")
+    _G["PointsFrameEditorTabClearButton"]:Hide()
     
     if am_admn() then _G["PointsFrameEditorTabDiffButton"]:Show() end
 end
 
 function export_points()
     set_active_tab("PointsFrameEditorTab")
+    _G["PointsFrameEditorTabClearButton"]:Hide()
     local f = _G["PointsFrameEditorTabScrollText"]
 
     for i=1, GetNumGuildMembers() do
@@ -17,7 +19,10 @@ end
 
 function export_transactions()
     set_active_tab("PointsFrameEditorTab")
-    _G["PointsFrameEditorTabClearTransactions"]:Show()
+    local b = _G["PointsFrameEditorTabClearButton"]
+    b:SetScript("OnClick", clear_transactions)
+    b:Show()
+
     local f = _G["PointsFrameEditorTabScrollText"]
 
     for _, v in pairs(PTS_transactions) do
@@ -27,7 +32,10 @@ end
 
 function export_diff()
     set_active_tab("PointsFrameEditorTab")
-    _G["PointsFrameEditorTabUpdateDiffButton"]:Show()
+    local b = _G["PointsFrameEditorTabClearButton"]
+    b:SetScript("OnClick", update_diff)
+    b:Show()
+
     local f = _G["PointsFrameEditorTabScrollText"]
 
     for i=1, GetNumGuildMembers() do
@@ -53,7 +61,9 @@ end
 
 function export_consums()
     set_active_tab("PointsFrameEditorTab")
-    _G["PointsFrameEditorTabClearConsumsButton"]:Show()
+    local b = _G["PointsFrameEditorTabClearButton"]
+    b:SetScript("OnClick", clear_consums)
+    b:Show()
 
     local f = _G["PointsFrameEditorTabScrollText"]
 
