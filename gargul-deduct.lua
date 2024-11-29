@@ -7,14 +7,19 @@ function gargul_deduct_points()
     local deductions = {}
     local deductions_reasons = {}
     local deduction_report = "Deducted: "
+    local main_alt_map = {}
+
+    -- populate temp cache of alt main map - all lower
+    for k, v in pairs(PTS_alt_main_map) do main_alt_map[string.lower(k)] = string.lower(v) end
 
     for id, auction in pairs(auctions) do
         local current = auction.CurrentBid
         if current then
-            if not deductions[current.player] then deductions[current.player] = 0 end
-            if not deductions_reasons[current.player] then deductions_reasons[current.player] = "" end
-            deductions[current.player] = deductions[current.player] + current.amount
-            deductions_reasons[current.player] = deductions_reasons[current.player] .. " / " .. auction.name
+            local player_name = main_alt_map[current.player] or current.player
+            if not deductions[player_name] then deductions[player_name] = 0 end
+            if not deductions_reasons[player_name] then deductions_reasons[player_name] = "" end
+            deductions[player_name] = deductions[player_name] + current.amount
+            deductions_reasons[player_name] = deductions_reasons[player_name] .. " / " .. auction.name
         end
     end
 
