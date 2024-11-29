@@ -20,5 +20,6 @@ transactions.lua
 guild.lua
 points.lua
 tooltip.lua
+groups.lua
 
 # find . -name '*.toc' -o -name '*.xml' -o -name '*.md' -o -name '*.lua' | xargs wc -l

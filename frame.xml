@@ -44,6 +44,10 @@
                         <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentLinksButton"></Anchor></Anchors>
                         <Scripts><OnClick> export_button_on_click() </OnClick></Scripts>
                     </Button>
+                    <Button name="$parentGroupsButton" text="Groups" inherits="PointsButton">
+                        <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentExportButton"></Anchor></Anchors>
+                        <Scripts><OnClick> groups_button_on_click()</OnClick></Scripts>
+                    </Button>
 
                     <Button name="$parentAddRemoveButton" text="Add Points" inherits="PointsButton">
                         <Anchors><Anchor point="TOPRIGHT"></Anchor></Anchors>
@@ -147,6 +151,7 @@
                 </Scripts>
             </Frame>
 
+            <!-- EXPORTS -->
             <Frame name="$parentEditorTab" inherits="PointsTab">
                 <Frames>
                     <ScrollFrame name="$parentScroll"  inherits="UIPanelScrollFrameTemplate">
@@ -179,6 +184,27 @@
                     <Button name="$parentDiffButton" text="Diff" inherits="PointsAdmn">
                         <Anchors><Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parentConsumsButton"></Anchor></Anchors>
                         <Scripts><OnClick> export_diff() </OnClick></Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+
+            <!-- GROUPS -->
+            <Frame name="$parentGroupsTab" inherits="PointsTab">
+                <Frames>
+                    <ScrollFrame name="$parentScroll"  inherits="UIPanelScrollFrameTemplate">
+                        <Size> <AbsDimension x="550" y="370" /></Size>
+                        <Anchors><Anchor point="TOPLEFT"></Anchor></Anchors>
+                        <ScrollChild>
+                            <EditBox name="$parentText" multiLine="true" historyLines="0" autoFocus="false">
+                                <Size> <AbsDimension x="550" y="370" /></Size>
+                                <Anchors><Anchor point="CENTER"/></Anchors>
+                                <FontString inherits="GameFontNormal"></FontString>
+                            </EditBox>
+                        </ScrollChild>
+                    </ScrollFrame>
+                    <Button name="$parentApplyGroups" text="Apply" inherits="PointsButton">
+                        <Anchors><Anchor point="BOTTOMRIGHT" /></Anchors>
+                        <Scripts><OnClick>groups_apply_button()</OnClick></Scripts>
                     </Button>
                 </Frames>
             </Frame>
